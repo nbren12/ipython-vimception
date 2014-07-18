@@ -28,7 +28,7 @@ function getCSS(path) {
 }
 
 // I messed around with trying to get requireJS going here, but gave up and
-// just using this answer from SO 
+// just using this answer from SO
 // http://stackoverflow.com/questions/11803215/how-to-include-multiple-js-files-using-jquery-getscript-method
 
 var p = "/static/components/codemirror/addon/";
@@ -152,11 +152,11 @@ cmd.add_shortcuts(command_shortcuts);
 //edit.add_shortcuts('k', def_edit['up'].handler);
 //edit.add_shortcut('j', def_edit['down'].handler);
 
-// N.B. This code looks fairly simple, but it took me forever to 
-// figure out how to do this, 
-// 
-// there's a problem here, Ctrl-[ is already handled by CodeMirror by the time we 
-// (IPython.keyboard_manager) get it CodeMirror issues signals on mode change, 
+// N.B. This code looks fairly simple, but it took me forever to
+// figure out how to do this,
+//
+// there's a problem here, Ctrl-[ is already handled by CodeMirror by the time we
+// (IPython.keyboard_manager) get it CodeMirror issues signals on mode change,
 // so we have to hook into that to get Ctrl-[
 edit.remove_shortcut('Ctrl-[');
 edit.remove_shortcut('Esc');
@@ -170,12 +170,12 @@ CodeMirror.commands.leaveInsertOrEdit = function (cm) {
         IPython.notebook.focus_cell();
     }
 };
-        
+
 //C().options.extraKeys['Ctrl-['] = 'leaveInsertOrEdit';
 all_cm( function (cm) {
     cm.options.extraKeys['Ctrl-['] = 'leaveInsertOrEdit';
     cm.options.extraKeys['Esc'] = 'leaveInsertOrEdit';
-    if ( CodeMirror.defaults.extraKeys === null ) { 
+    if ( CodeMirror.defaults.extraKeys === null ) {
         CodeMirror.defaults.extraKeys = {};
     }
     // TODO: make this change permanent
@@ -197,11 +197,11 @@ all_cm( function (cm) {
         CodeMirror.keyMap['vim']['Esc'](cm);
         cm.setOption('styleActiveLine', false);
         if (cm.getOption("fullScreen")) {
-            cm.setOption('fullScreen', false); 
+            cm.setOption('fullScreen', false);
             // fullScreen the newly selected code mirror (doesn't work)
             //setTimeout(100, function() {
             //    console.log(IPython.notebook.get_selected_cell().code_mirror);
-            //    IPython.notebook.get_selected_cell().code_mirror.setOption('fullScreen', true); 
+            //    IPython.notebook.get_selected_cell().code_mirror.setOption('fullScreen', true);
             //});
         }
     });
@@ -234,9 +234,9 @@ function combo_tap(combo, action) {
     var timeout;
     function f() {
         console.log('f called once');
-        
+
         // redo this so that when an action is performed, we restore the original combo
-        cmd.add_shortcut(combo[1], 
+        cmd.add_shortcut(combo[1],
                 function() { console.log("doing action", combo); reset(); action(); timeout.clear();} );
         timeout = setTimeout(function () {
             console.log('resetting f');
@@ -252,11 +252,11 @@ function combo_tap(combo, action) {
         //    clearTimeout(timeout);
         //    timeout = null;
         //}
-        //that(combo, action); 
+        //that(combo, action);
         cmd.add_shortcut(combo[0], f);
     }
     console.log("combo tap for", combo);
-    
+
     reset();
 };
 cmd.add_shortcut('shift-g', focus_last);
@@ -284,7 +284,7 @@ cmd.add_shortcut('shift-j', def_cmd['shift-m'])
 //edit.add_shortcut('k', def_edit['up'].handler);
 //[edit.add_shortcut('j', def_edit['down'].handler);
 
-CodeMirror.prototype.save = function() { 
+CodeMirror.prototype.save = function() {
     IPython.notebook.save_checkpoint()
 }
 
@@ -357,10 +357,10 @@ all_cm( function (cm) {
 $("#ipython_notebook").find('img').remove('#vim');
 $("#ipython_notebook").append('<img id="vim" src="http://www.vim.org/images/vim_on_fire.gif"'
         // XXX: add it to the distribution
-        // /static/custom/vim_on_fire.gif" 
+        // /static/custom/vim_on_fire.gif"
     + ' style="'
     + 'position: absolute; left: 51px; top: -10px; height: initial;">')
-
+$("#vim").click( function () {$(this).hide()} );
 
 // -------- old -------------
 //$('#vim').animate({
@@ -392,7 +392,7 @@ $("#ipython_notebook").append('<img id="vim" src="http://www.vim.org/images/vim_
 //    });
 //});
 
-}, function  failure() { 
+}, function  failure() {
     alert('le sucks, something went wrong');
 
 });
